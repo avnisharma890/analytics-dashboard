@@ -32,41 +32,71 @@ function Login() {
   };
 
   return (
-    <div style={{ padding: 40 }}>
-      <h2>Login / Register</h2>
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
+      <div className="bg-gray-800 rounded-xl shadow-2xl p-8 w-full max-w-md border border-gray-700">
+        <h2 className="text-3xl font-bold text-white mb-8 text-center">Analytics Dashboard</h2>
 
-      <input
-        name="username"
-        placeholder="username"
-        onChange={handleChange}
-      />
-      <br />
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Username</label>
+            <input
+              name="username"
+              placeholder="Enter username"
+              onChange={handleChange}
+              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            />
+          </div>
 
-      <input
-        name="password"
-        type="password"
-        placeholder="password"
-        onChange={handleChange}
-      />
-      <br />
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
+            <input
+              name="password"
+              type="password"
+              placeholder="Enter password"
+              onChange={handleChange}
+              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            />
+          </div>
 
-      <input
-        name="age"
-        placeholder="age"
-        onChange={handleChange}
-      />
-      <br />
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Age</label>
+            <input
+              name="age"
+              placeholder="Enter age"
+              onChange={handleChange}
+              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            />
+          </div>
 
-      <select name="gender" onChange={handleChange}>
-        <option>Male</option>
-        <option>Female</option>
-        <option>Other</option>
-      </select>
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Gender</label>
+            <select
+              name="gender"
+              onChange={handleChange}
+              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            >
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
 
-      <br /><br />
-
-      <button onClick={register}>Register</button>
-      <button onClick={login}>Login</button>
+          <div className="flex gap-3 pt-4">
+            <button
+              onClick={login}
+              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-lg hover:shadow-xl"
+            >
+              Login
+            </button>
+            <button
+              onClick={register}
+              className="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 border border-gray-600"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
