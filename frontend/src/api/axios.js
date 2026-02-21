@@ -9,7 +9,7 @@ api.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
-  console.log(import.meta.env.VITE_API_URL);
+  // console.log(import.meta.env.VITE_API_URL);
   return config;
 });
 
