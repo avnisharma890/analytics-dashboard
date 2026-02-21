@@ -9,14 +9,14 @@ function Login() {
     gender: "Male",
   });
 
+  const [error, setError] = useState("");
+
   const handleChange = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
   };
-
-  const [error, setError] = useState("");
 
   const register = async () => {
     try {
@@ -30,7 +30,6 @@ function Login() {
         err.response?.data?.message ||
         "";
 
-      // user-friendly mapping
       let message = "Registration failed. Please try again.";
 
       if (raw.toLowerCase().includes("duplicate")) {
@@ -53,21 +52,15 @@ function Login() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 flex items-center justify-center p-4">
       <div className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-gray-600 transition">
-        <h2 className="text-3xl font-bold text-white mb-8 text-center">Analytics Dashboard</h2>
+        <h2 className="text-3xl font-bold text-white mb-8 text-center">
+          Analytics Dashboard
+        </h2>
 
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Username</label>
-            <input
-              name="username"
-              placeholder="Enter username"
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-            />
-          </div>
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Username</label>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Username
+            </label>
             <input
               name="username"
               placeholder="Enter username"
@@ -77,17 +70,9 @@ function Login() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
-            <input
-              name="password"
-              type="password"
-              placeholder="Enter password"
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Password
+            </label>
             <input
               name="password"
               type="password"
@@ -98,7 +83,9 @@ function Login() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Age</label>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Age
+            </label>
             <input
               name="age"
               placeholder="Enter age"
@@ -108,7 +95,9 @@ function Login() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Gender</label>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Gender
+            </label>
             <select
               name="gender"
               onChange={handleChange}
