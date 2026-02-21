@@ -46,31 +46,43 @@ function Filters({ setFilters }) {
   };
 
   return (
-    <div style={{ marginBottom: 20 }}>
-      <input
-        type="date"
-        name="start"
-        value={localFilters.start}
-        onChange={handleChange}
-      />
+    <div className="flex flex-col sm:flex-row gap-4">
+      <div className="flex-1">
+        <label className="block text-sm font-medium text-gray-300 mb-2">Start Date</label>
+        <input
+          type="date"
+          name="start"
+          value={localFilters.start}
+          onChange={handleChange}
+          className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+        />
+      </div>
 
-      <input
-        type="date"
-        name="end"
-        value={localFilters.end}
-        onChange={handleChange}
-      />
+      <div className="flex-1">
+        <label className="block text-sm font-medium text-gray-300 mb-2">End Date</label>
+        <input
+          type="date"
+          name="end"
+          value={localFilters.end}
+          onChange={handleChange}
+          className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+        />
+      </div>
 
-      <select
-        name="gender"
-        value={localFilters.gender}
-        onChange={handleChange}
-      >
-        <option value="">All</option>
-        <option>Male</option>
-        <option>Female</option>
-        <option>Other</option>
-      </select>
+      <div className="flex-1">
+        <label className="block text-sm font-medium text-gray-300 mb-2">Gender</label>
+        <select
+          name="gender"
+          value={localFilters.gender}
+          onChange={handleChange}
+          className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+        >
+          <option value="">All</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
     </div>
   );
 }
