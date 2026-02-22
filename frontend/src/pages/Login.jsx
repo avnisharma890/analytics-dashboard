@@ -21,7 +21,7 @@ function Login() {
   const register = async () => {
     try {
       setError("");
-      const res = await api.post("/auth/register", form);
+      const res = await api.post("auth/register", form);
       localStorage.setItem("token", res.data.token);
       window.location.href = "/";
     } catch (err) {
@@ -41,7 +41,7 @@ function Login() {
   };
 
   const login = async () => {
-    const res = await api.post("/auth/login", {
+    const res = await api.post("auth/login", {
       username: form.username,
       password: form.password,
     });
