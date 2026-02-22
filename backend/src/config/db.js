@@ -9,7 +9,10 @@ const isLocal =
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: isLocal ? false : { rejectUnauthorized: false },
+  ssl: isLocal ? false : { 
+    rejectUnauthorized: false,
+    sslmode: 'require'
+  },
 });
 
 module.exports = pool;
