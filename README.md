@@ -2,7 +2,7 @@
 
 A full-stack analytics dashboard that tracks user interactions and visualizes feature usage with dynamic filtering.
 
-**Live Demo:** <YOUR_FRONTEND_URL>  
+**Live Demo:** https://analytics-dashboard-frontend-mocha.vercel.app/  
 **Backend API:** https://analytics-dashboard-backend-c9x4.onrender.com
 **Design Document:** See `DESIGN.md` for detailed architecture.
 
@@ -125,3 +125,16 @@ Key design decisions include:
 - **Cookie-based filter persistence** for better UX
 
 For detailed reasoning, see `DESIGN.md`.
+
+
+### Handling 1 Million Write Events per Minute
+
+If this dashboard needed to handle around 1 million write events per minute, the current approach of writing each tracking event directly to PostgreSQL would likely become a bottleneck. At higher scale, the database would struggle with the volume of concurrent writes and could impact both ingestion and analytics queries.
+
+To address this, I would move towards an event-driven ingestion pipeline. Instead of inserting directly into PostgreSQL, incoming tracking requests could first be pushed to a high-throughput queue or stream (for example, Kafka or Redis Streams). This would act as a buffer and help absorb traffic spikes.
+
+From there, background worker processes could batch events and write them to the database more efficiently. I would also consider time-based partitioning on the events table to keep queries fast as data grows.
+
+On the read side, frequently used aggregates could be cached (e.g., in Redis) or precomputed using materialized views to reduce query load on the primary database.
+
+While my current implementation keeps things simple for the scope of this assignment, this staged pipeline approach would allow the system to scale horizontally and handle much higher event throughput in the future.
