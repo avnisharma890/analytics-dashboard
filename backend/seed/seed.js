@@ -7,6 +7,7 @@ const features = ['date_filter', 'gender_filter', 'bar_chart_zoom'];
 
 async function seed() {
   try {
+    console.log("Seed function started");
     console.log("Seeding database...");
 
     // Clear old data
@@ -54,3 +55,8 @@ async function seed() {
 }
 
 module.exports = seed;
+
+// Run directly if called via: node seed/seed.js
+if (require.main === module) {
+  seed();
+}
