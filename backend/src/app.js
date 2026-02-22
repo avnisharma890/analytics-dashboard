@@ -7,14 +7,15 @@ const analyticsRoutes = require('./routes/analytics.routes');
 
 const app = express();
 
+
 const allowedOrigins = [
-  process.env.CLIENT_URL,
-  "http://localhost:5173",
+  process.env.CLIENT_URL,        // Vercel frontend
+  "http://localhost:5173",       // local dev
 ];
 
-app.use(cors({
+const corsOptions = {
   origin: function (origin, callback) {
-    // allow requests with no origin (mobile apps, curl, etc.)
+    // allow server-to-server or curl requests
     if (!origin) return callback(null, true);
 
     if (allowedOrigins.includes(origin)) {
@@ -25,10 +26,21 @@ app.use(cors({
     return callback(new Error("Not allowed by CORS"));
   },
   credentials: true,
-}));
-app.options("*", cors());
+};
+
+app.use(cors(corsOptions));
+
+app.options('*', cors(corsOptions));
 
 app.use(express.json());
+
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'ok',
+    service: 'analytics-dashboard-backend',
+    time: new Date().toISOString(),
+  });
+});
 
 app.use('/auth', authRoutes);
 app.use('/track', trackRoutes);
