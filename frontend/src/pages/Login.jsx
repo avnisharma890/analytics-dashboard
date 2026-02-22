@@ -19,6 +19,7 @@ function Login() {
   };
 
   const register = async () => {
+    console.log("REGISTER CLICKED");
     try {
       setError("");
       const res = await api.post("auth/register", form);
